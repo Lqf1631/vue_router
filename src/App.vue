@@ -5,7 +5,12 @@
   <router-view></router-view>
 </template>
 <script setup lang="ts">
-// 路由：通过同一页面的 hash 地址的切换来控制组件的对应显示，实现单页面程序切换多个 hash 网页效果
+// 路由模式: 由 history 进行配置，分为 Web 和 Hash 模式，分别基于 hash 地址和 h5 的 history 实现
+// hash 模式: 地址为 #/ 基于 loaction.hash 赋值进行跳转，基于 hashChange 事件进行监听切换组件显示
+// 采用 history: createHashHistory() 进行配置
+// Web 模式: 地址没有 # 基于 history.pushSate 进行跳转，基于 popSatate 事件进行监听切换组件显示
+// 采用 history：createWebhistory() 进行配置
+// 以上两种方式均实现改变路径而页面不刷新，实现单页面的路由
 
 // 路由配置：
 // 安装 npm install vue-router -S
