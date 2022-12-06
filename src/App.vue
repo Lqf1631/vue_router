@@ -5,12 +5,15 @@
   <router-link class="routerLink" to="/reg">reg</router-link>
   <router-view></router-view>
   <!-- router-link 可以通过 to 属性进行属性绑定，绑定包含 name 的对象进行跳转 -->
-  <router-link :to="{ name: 'login' }">login</router-link>
-  <router-link class="routerLink" :to="{ name: 'reg' }">reg</router-link>
+  <!-- router-link 设置 replace 属性可以清除该次跳转的历史记录 -->
+  <router-link :to="{ name: 'login' }" replace>login</router-link>
+  <router-link class="routerLink" :to="{ name: 'reg' }" replace>reg</router-link>
   <!-- <button @click="to('/')">login</button>
   <button @click="to('/reg')">reg</button> -->
   <button @click="to('login')">login</button>
   <button @click="to('reg')">reg</button>
+  <button @click="next()">next</button>
+  <button @click="pre()">pre</button>
 </template>
 <script setup lang="ts">
 // 路由模式: 由 history 进行配置，分为 Web 和 Hash 模式，分别基于 hash 地址和 h5 的 history 实现
@@ -47,6 +50,12 @@
 // 通过 name 或 path 指定组件进行跳转
 // router.push(path:string || {name:string})
 
+// 历史记录
+// 跳转不留下历史记录：router-link 标签中设置 replace 属性，使得路由跳转不留下历史记录
+// 在编程式导航中，采用 router.replace() 使得路由跳转不留下历史记录
+// 编程式实现前进后退，调用 router.go(number) / router.back(number) 实现编程式前进后退
+// 上述的前进后退是基于历史记录的前进后退
+
 // 导入 userRouter hook 函数
 import { useRouter } from 'vue-router';
 // 调用 userRouter hook 函数，创建 router 对象进行路由操作
@@ -60,7 +69,13 @@ const router = useRouter()
 const to = (name:string) => {
   // 接受 name 进行跳转
   router.push({name})
-} 
+}
+const next = () => {
+  router.go(1)
+}
+const pre = () => {
+  router.back(1)
+}
 </script>
 <style scoped lang="less">
 .routerLink {
