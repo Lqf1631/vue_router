@@ -2,11 +2,13 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
 const routes: Array<RouteRecordRaw> = [{
-  // RouteRecordRaw 对象具有 path 和 component 配置属性，用于指定路径和对应组件
+  // RouteRecordRaw 对象具有 path  component name 配置属性，用于指定路径和对应组件和名称
+  name:'login',
   path: '/',
   // component 采用函数形式，返回值为 import 导入的组件
   component: () => import('../components/login.vue')
 }, {
+  name:'reg',
   path: '/reg',
   component: () => import('../components/reg.vue')
 }]
