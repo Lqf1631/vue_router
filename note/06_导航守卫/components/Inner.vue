@@ -9,6 +9,6 @@ const back = () => {
   router.push('/')
 }
 </script>
-<style scoped lang="less">
+<style scoped lang="less"> 
 
 </style>

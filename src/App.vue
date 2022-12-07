@@ -21,7 +21,7 @@
 // 注意：'/login' 登录页面为白名单
 
 </script>
-<style scoped lang="less">
+<style lang="less">
 * {
   margin: 0;
   padding: 0;
@@ -29,8 +29,7 @@
 body,
 html,
 #app {
-  height: 100%;
+  width: 100%;
   overflow: hidden;
-  width: 100px;
 }
 </style>
