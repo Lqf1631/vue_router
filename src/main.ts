@@ -12,6 +12,8 @@ createApp(App).use(router).mount('#app')
 const publicRoute = ['/public', '/']
 // 设置前置路由卫士，拦截非公开的路由
 router.beforeEach((to, from, next) => {
+  // 获取跳转目标页面的元信息的 title 值，将其赋值给 document.title 文档标题
+  document.title = to.meta.title
   // 如果 to 的路径在公开路由的路径中，或者进行过登录操作具备 token 权限，则放行
   if (publicRoute.includes(to.path) || localStorage.getItem('token')) {
     // 开始跳转时，调用全局插件 loadingBar 的 startLoading ，加载条开始移动
