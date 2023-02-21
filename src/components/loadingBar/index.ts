@@ -10,5 +10,5 @@ const VNode = createVNode(loadingBar)
 // 将 VNode 渲染到 document.body
 render(VNode,document.body)
 
-export const startLoading = VNode.component?.exposed?.startLoading
-export const endLoading = VNode.component?.exposed?.endLoading
+export const loading = VNode.component?.exposed?.loading
+export const loaded = VNode.component?.exposed?.loaded
